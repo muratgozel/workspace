@@ -1,0 +1,38 @@
+<clickhouse>
+  <merge_tree>
+    <!-- keep all of these <= background_pool_size * background_merges_mutations_concurrency_ratio -->
+    <number_of_free_entries_in_pool_to_execute_mutation>1</number_of_free_entries_in_pool_to_execute_mutation>
+    <number_of_free_entries_in_pool_to_lower_max_size_of_merge>1</number_of_free_entries_in_pool_to_lower_max_size_of_merge>
+    <number_of_free_entries_in_pool_to_execute_optimize_entire_partition>1</number_of_free_entries_in_pool_to_execute_optimize_entire_partition>
+  </merge_tree>
+  <!-- Keep background tasks polite -->
+  <background_pool_size>1</background_pool_size>
+  <background_schedule_pool_size>1</background_schedule_pool_size>
+
+  <!-- Lower thread fans -->
+  <max_concurrent_queries>2</max_concurrent_queries>
+
+  <!-- Memory/cache modest -->
+  <max_server_memory_usage_to_ram_ratio>0</max_server_memory_usage_to_ram_ratio>
+  <mark_cache_size>33554432</mark_cache_size>          <!-- 32MB -->
+  <uncompressed_cache_size>33554432</uncompressed_cache_size>
+
+  <!-- Less log churn -->
+  <log_level>warning</log_level>
+
+    <!-- fewer background metric snapshots -->
+  <asynchronous_metrics_update_period_s>60</asynchronous_metrics_update_period_s>
+
+  <!-- increase flush intervals / keep levels high -->
+  <query_log><flush_interval_milliseconds>15000</flush_interval_milliseconds></query_log>
+  <query_thread_log><flush_interval_milliseconds>15000</flush_interval_milliseconds></query_thread_log>
+  <trace_log><flush_interval_milliseconds>15000</flush_interval_milliseconds></trace_log>
+  <processors_profile_log><flush_interval_milliseconds>15000</flush_interval_milliseconds></processors_profile_log>
+  <metric_log>
+    <level>warning</level>
+    <flush_interval_milliseconds>15000</flush_interval_milliseconds>
+  </metric_log>
+  <text_log>
+    <level>warning</level>
+  </text_log>
+</clickhouse>

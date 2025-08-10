@@ -2,11 +2,13 @@
   "name": "workspace",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@formatjs/intl": "^3.1.6",
     "ajv": "^8.17.1",
     "bowser": "^2.11.0",
     "d8code": "^1.0.0",
@@ -14,5 +16,8 @@
     "jose": "^6.0.11",
     "resolve-accept-language": "^3.1.11",
     "utf8": "^3.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.4"
   }
 }
